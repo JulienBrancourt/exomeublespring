@@ -45,10 +45,10 @@
                 <a class="btn btn-warning btn-sm" th:href="@{/update(id=${f.getId()})}">Modifier</a>
                 <a class="btn btn-danger btn-sm" th:href="@{/deletefourniture(id=${f.getId()})}">Supprimer</a>
 
-                    <form th:if="${f.stock} > 0" th:action="@{/addToCart}" method="post">
-                        <input type="hidden" name="id" th:value="${f.id}" />
-                        <button type="submit" class="btn btn-info btn-sm">Ajouter au panier</button>
-                    </form>
+                <form th:if="${f.stock} > 0" th:action="@{/addToCart}" method="post">
+                    <input type="hidden" name="id" th:value="${f.id}" />
+                    <button type="submit" class="btn btn-info btn-sm">Ajouter au panier</button>
+                </form>
 
             </td>
         </tr>

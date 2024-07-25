@@ -11,7 +11,6 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 public class Furniture {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
@@ -21,6 +20,6 @@ public class Furniture {
     private double price;
     private int stock;
 
-    @OneToOne (mappedBy = "furniture", cascade = CascadeType.ALL)
+    @OneToOne (mappedBy = "furniture", cascade = CascadeType.REMOVE)
     private CartItem cartItem;
 }

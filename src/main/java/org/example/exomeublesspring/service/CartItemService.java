@@ -12,12 +12,10 @@ import java.util.List;
 public class CartItemService {
     private final CartItemRepository cartItemRepository;
     private final FurnitureService furnitureService;
-//    private final FurnitureRepository furnitureRepository;
 
-    public CartItemService(CartItemRepository cartItemRepository,FurnitureRepository furnitureRepository, FurnitureService furnitureService) {
+    public CartItemService(CartItemRepository cartItemRepository, FurnitureService furnitureService) {
         this.cartItemRepository = cartItemRepository;
         this.furnitureService = furnitureService;
-//        this.furnitureRepository = furnitureRepository;
     }
 
     public List<CartItem> getCartItems() {
@@ -33,7 +31,7 @@ public class CartItemService {
     }
 
     public void addFurniture(CartItem cartItem, int id) {
-    Furniture furniture = furnitureService.findById(id);
+        Furniture furniture = furnitureService.findById(id);
 
         boolean alreadyInCart = false;
         for (CartItem c : getCartItems()) {
@@ -59,7 +57,8 @@ public class CartItemService {
         Furniture furniture = furnitureService.findById(cartItemToDelete.getFurniture().getId());
         furniture.setStock(furniture.getStock() + cartItemToDelete.getQuantity());
         furnitureService.save(furniture);
-        cartItemRepository.delete(cartItemToDelete);
+//        System.out.println(cartItemToDelete.getId());
+        cartItemRepository.deleteById(cartItemToDelete.getId());
     }
 
     public void removeAllCartItem() {
